@@ -14,6 +14,13 @@
 
 namespace DCSynths
 {
+	enum class BufferProcessType
+	{
+		Overwrite = 0,
+		Additive,
+		Multiplicative
+	};
+
 	class QuinoaGrain
 	{
 	public:
@@ -40,11 +47,9 @@ namespace DCSynths
 
 		void Stop();
 
-		void ProcessBufferAdditive(float *buffer, int numSamples, int numChannels);
+		void ProcessBuffer(float *buffer, int numSamples, int numChannels, BufferProcessType processType);
 		
-		void ProcessBufferMultiplicative(float *buffer, int numSamples, int numChannels);
-
-		void SetSample(const float *sample, int numSamples);
+		void SetSample(const float *sample, int numSamples, double sampleRate);
 
 		void SetSpeed(double speed);
 
@@ -59,6 +64,7 @@ namespace DCSynths
 		void SetWindowSmoothness(float smoothness);
 	private:
 		double _sampleRate;
+		double _sampleRateRatio;
 		std::vector<float> _samples;
 		std::vector<float> _window1;
 		std::vector<float> _window2;

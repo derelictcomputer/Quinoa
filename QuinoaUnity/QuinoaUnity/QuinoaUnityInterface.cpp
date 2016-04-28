@@ -20,14 +20,14 @@ extern "C"
 		if (q) delete q;
 	}
 
-	EXPORT_API void Quinoa_SetSample(Quinoa *q, const float *sample, int numSamples)
+	EXPORT_API void Quinoa_SetSample(Quinoa *q, const float *sample, int numSamples, double sampleRate)
 	{
-		if (q) q->SetSample(sample, numSamples);
+		if (q) q->SetSample(sample, numSamples, sampleRate);
 	}
 
 	EXPORT_API void Quinoa_ProcessBuffer(Quinoa *q, float *buffer, int numSamples, int numChannels)
 	{
-		if (q) q->ProcessBufferMultiplicative(buffer, numSamples, numChannels);
+		if (q) q->ProcessBuffer(buffer, numSamples, numChannels, DCSynths::BufferProcessType::Multiplicative);
 	}
 
 	EXPORT_API void Quinoa_SetSpeed(Quinoa *q, double speed)

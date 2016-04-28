@@ -93,7 +93,7 @@ namespace DCSynths
 	{
 	}
 
-	void Quinoa::ProcessBufferAdditive(float* buffer, int numSamples, int numChannels)
+	void Quinoa::ProcessBuffer(float* buffer, int numSamples, int numChannels, BufferProcessType processType)
 	{
 		if (_samples.size() == 0)
 		{
@@ -102,6 +102,8 @@ namespace DCSynths
 
 		auto sLen = static_cast<size_t>(_length * _samples.size());
 		auto sStart = static_cast<size_t>(_start * _samples.size());
+		auto speed = _speed * _sampleRateRatio;
+		auto pitch = _pitch * _sampleRateRatio;
 
 		// make length authoritative so we don't go beyond the buffer
 		if (sStart + sLen >= _samples.size())
@@ -115,60 +117,36 @@ namespace DCSynths
 		{
 			if (!_grain.HasSample())
 			{
-				_grain.Init(sStart, _sPos, _pitch, _windowSmooth, sLen, _samples, _window1, _window2);
+				_grain.Init(sStart, _sPos, pitch, _windowSmooth, sLen, _samples, _window1, _window2);
 			}
 
 			sample = _grain.GetSample();
 
-			_sPos += _speed;
+			_sPos += speed;
 			if (_sPos >= sLen) _sPos -= sLen;
 
 			for (int j = 0; j < numChannels; ++j)
 			{
-				buffer[i + j] += sample;
+				switch (processType)
+				{
+				case BufferProcessType::Overwrite: 
+					buffer[i + j] = sample;
+					break;
+				case BufferProcessType::Additive: 
+					buffer[i + j] += sample;
+					break;
+				case BufferProcessType::Multiplicative: 
+					buffer[i + j] *= sample;
+					break;
+				default: break;
+				}
 			}
 		}
 	}
 
-	void Quinoa::ProcessBufferMultiplicative(float* buffer, int numSamples, int numChannels)
+	void Quinoa::SetSample(const float* sample, int numSamples, double sampleRate)
 	{
-		if (_samples.size() == 0)
-		{
-			return;
-		}
-
-		auto sLen = static_cast<size_t>(_length * _samples.size());
-		auto sStart = static_cast<size_t>(_start * _samples.size());
-
-		// make length authoritative so we don't go beyond the buffer
-		if (sStart + sLen >= _samples.size())
-		{
-			sStart = _samples.size() - sLen;
-		}
-
-		float sample;
-
-		for (int i = 0; i < numSamples; i += numChannels)
-		{
-			if (!_grain.HasSample())
-			{
-				_grain.Init(sStart, _sPos, _pitch, _windowSmooth, sLen, _samples, _window1, _window2);
-			}
-
-			sample = _grain.GetSample();
-
-			_sPos += _speed;
-			if (_sPos >= sLen) _sPos -= sLen;
-
-			for (int j = 0; j < numChannels; ++j)
-			{
-				buffer[i + j] *= sample;
-			}
-		}
-	}
-
-	void Quinoa::SetSample(const float* sample, int numSamples)
-	{
+		_sampleRateRatio = sampleRate / _sampleRate;
 		_sPos = 0;
 		_samples.resize(numSamples);
 
