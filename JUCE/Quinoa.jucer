@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="ViEFif" name="Quinoa" projectType="guiapp" version="1.0.0"
+              bundleIdentifier="com.derelictcomputer.Quinoa" includeBinaryInAppConfig="1"
+              jucerVersion="4.2.1" companyName="Derelict Computer" companyWebsite="http://derelict.computer"
+              companyEmail="info@derelict.computer">
+  <MAINGROUP id="hvUWWY" name="Quinoa">
+    <GROUP id="{A3E970BD-AD0F-CC0F-70C5-10FFFD5A80B7}" name="Source">
+      <GROUP id="{B0CD1A66-A765-C692-D06F-8D8270E55BFB}" name="Quinoa">
+        <FILE id="b1FtBo" name="Quinoa.cpp" compile="1" resource="0" file="Source/Quinoa.cpp"/>
+        <FILE id="d6MQR5" name="Quinoa.h" compile="0" resource="0" file="Source/Quinoa.h"/>
+        <FILE id="BP3V1Q" name="QuinoaEditor.cpp" compile="1" resource="0"
+              file="Source/QuinoaEditor.cpp"/>
+        <FILE id="dY1wua" name="QuinoaEditor.h" compile="0" resource="0" file="Source/QuinoaEditor.h"/>
+      </GROUP>
+      <FILE id="gnsLZp" name="MainComponent.cpp" compile="1" resource="0"
+            file="Source/MainComponent.cpp"/>
+      <FILE id="rw9nzN" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+    </GROUP>
+  </MAINGROUP>
+  <EXPORTFORMATS>
+    <VS2015 targetFolder="Builds/VisualStudio2015">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
+                       isDebug="1" optimisation="1" targetName="Quinoa"/>
+        <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
+                       isDebug="0" optimisation="3" targetName="Quinoa"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_core" path="..\JUCE_4.2.1\JUCE\modules"/>
+        <MODULEPATH id="juce_events" path="..\JUCE_4.2.1\JUCE\modules"/>
+        <MODULEPATH id="juce_graphics" path="..\JUCE_4.2.1\JUCE\modules"/>
+        <MODULEPATH id="juce_data_structures" path="..\JUCE_4.2.1\JUCE\modules"/>
+        <MODULEPATH id="juce_gui_basics" path="..\JUCE_4.2.1\JUCE\modules"/>
+        <MODULEPATH id="juce_gui_extra" path="..\JUCE_4.2.1\JUCE\modules"/>
+        <MODULEPATH id="juce_cryptography" path="..\JUCE_4.2.1\JUCE\modules"/>
+        <MODULEPATH id="juce_video" path="..\JUCE_4.2.1\JUCE\modules"/>
+        <MODULEPATH id="juce_opengl" path="..\JUCE_4.2.1\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_basics" path="..\JUCE_4.2.1\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_devices" path="..\JUCE_4.2.1\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_formats" path="..\JUCE_4.2.1\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_processors" path="..\JUCE_4.2.1\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_utils" path="..\JUCE_4.2.1\JUCE\modules"/>
+      </MODULEPATHS>
+    </VS2015>
+  </EXPORTFORMATS>
+  <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="1"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="1"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="1"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="1"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="1"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="1"/>
+    <MODULE id="juce_cryptography" showAllCode="1" useLocalCopy="1"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="1"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="1"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="1"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="1"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="1"/>
+    <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="1"/>
+    <MODULE id="juce_video" showAllCode="1" useLocalCopy="1"/>
+  </MODULES>
+  <JUCEOPTIONS/>
+</JUCERPROJECT>

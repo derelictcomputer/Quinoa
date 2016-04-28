@@ -1,0 +1,7 @@
+; Quinoa.def : Declares the module parameters for the DLL.
+
+LIBRARY      "Quinoa"
+
+EXPORTS
+	AkCreatePlugin
+	AkGetSoundEngineCallbacks
