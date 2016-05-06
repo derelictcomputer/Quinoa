@@ -1,0 +1,84 @@
+{
+    "Presets": [
+        {
+            "Speed": 5.537776470184326,
+            "Pitch": 2.137949228286743,
+            "WindowSize": 227,
+            "Start": 0.15704071521759034,
+            "Length": 0.6721429228782654,
+            "Smoothness": 0.7091837525367737
+        },
+        {
+            "Speed": 2.2439382076263429,
+            "Pitch": 0.4013469815254212,
+            "WindowSize": 128,
+            "Start": 0.45642849802970889,
+            "Length": 0.1495918482542038,
+            "Smoothness": 0.8724489808082581
+        },
+        {
+            "Speed": 1.249265432357788,
+            "Pitch": 0.9231429696083069,
+            "WindowSize": 340,
+            "Start": 0.009183675050735474,
+            "Length": 0.26806125044822695,
+            "Smoothness": 1.0
+        },
+        {
+            "Speed": 0.01,
+            "Pitch": 0.01,
+            "WindowSize": 128,
+            "Start": 0.0,
+            "Length": 0.1,
+            "Smoothness": 0.0
+        },
+        {
+            "Speed": 0.01,
+            "Pitch": 0.01,
+            "WindowSize": 128,
+            "Start": 0.0,
+            "Length": 0.1,
+            "Smoothness": 0.0
+        },
+        {
+            "Speed": 0.01,
+            "Pitch": 0.01,
+            "WindowSize": 128,
+            "Start": 0.0,
+            "Length": 0.1,
+            "Smoothness": 0.0
+        },
+        {
+            "Speed": 0.0,
+            "Pitch": 0.0,
+            "WindowSize": 0,
+            "Start": 0.0,
+            "Length": 0.0,
+            "Smoothness": 0.0
+        },
+        {
+            "Speed": 0.0,
+            "Pitch": 0.0,
+            "WindowSize": 0,
+            "Start": 0.0,
+            "Length": 0.0,
+            "Smoothness": 0.0
+        },
+        {
+            "Speed": 0.0,
+            "Pitch": 0.0,
+            "WindowSize": 0,
+            "Start": 0.0,
+            "Length": 0.0,
+            "Smoothness": 0.0
+        },
+        {
+            "Speed": 0.0,
+            "Pitch": 0.0,
+            "WindowSize": 0,
+            "Start": 0.0,
+            "Length": 0.0,
+            "Smoothness": 0.0
+        }
+    ]
+}
