@@ -60,8 +60,11 @@ public:
     //==============================================================================
     void prepareToPlay (int samplesPerBlockExpected, double sampleRate) override
     {
-		if (_sampler == nullptr)
-			_sampler = new DCSynths::Quinoa(sampleRate);
+      if (_sampler == nullptr)
+      {
+       _sampler = new DCSynths::Quinoa(sampleRate);
+      }
+      _sampleRate = sampleRate;
     }
 
     void getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill) override
@@ -69,7 +72,7 @@ public:
 		if (!_fileSampleBuffer.hasBeenCleared() && _fileSampleBuffer.getNumSamples() > 0)
 		{
 			int numSamples = _fileSampleBuffer.getNumSamples();
-			_sampler->SetSample(_fileSampleBuffer.getReadPointer(0), numSamples);
+      _sampler->SetSample(_fileSampleBuffer.getReadPointer(0), numSamples, _sampleRate);
 			_sampler->Play(0);
 			_fileSampleBuffer.clear();
 		}
@@ -87,9 +90,13 @@ public:
 			auto channel = bufferToFill.buffer->getWritePointer(cIdx, bufferToFill.startSample);
 
 			if (cIdx == 0)
-				_sampler->ProcessBuffer(channel, bufferToFill.numSamples);
+      {
+        _sampler->ProcessBuffer(channel, bufferToFill.numSamples, 1, DCSynths::BufferProcessType::Overwrite);
+      }
 			else
-				memcpy(channel, bufferToFill.buffer->getReadPointer(0, bufferToFill.startSample), bufferToFill.numSamples * sizeof(float));
+      {
+        memcpy(channel, bufferToFill.buffer->getReadPointer(0, bufferToFill.startSample), bufferToFill.numSamples * sizeof(float));
+      }
 		}
 		
     }
@@ -152,6 +159,7 @@ public:
 
 private:
 	ScopedPointer<DCSynths::Quinoa> _sampler;
+  double _sampleRate;
 	TextButton _loadButton;
 	Slider _speedSlider;
 	Slider _pitchSlider;
